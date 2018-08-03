@@ -4,6 +4,7 @@ AS (SELECT
   q.wc,
   q.wo,
   q.op,
+  q.ops,
   q.emp,
   DATEPART(HOUR, q.st) AS fhr,
   q.fhr AS fhd,
@@ -181,15 +182,16 @@ FROM (SELECT
   y.wc,
   y.wo,
   y.op,
+  y.ops,
   y.emp,
   y.st,
   y.stp,
   y.sthr,
   y.stphr,
-  --y.diff,
-  --y.samehr,
+  
+ 
   y.fhr,
-  --y.mhr,
+
 
   y.lhr
 
@@ -203,6 +205,7 @@ FROM (SELECT
   s.workorder_id AS wo,
   s.stop_reason AS op,
   s.employee_id AS emp,
+  s.operation as ops,
   s.beginDown AS st,
   s.endDown AS stp,
   DATEPART(HOUR, s.beginDown) AS sthr,
@@ -219,12 +222,6 @@ FROM (SELECT
 
 
 
-  --case when DATEPART(hour,s.beginDown)<>DATEPART(hour,s.endDown) then 
-  --60 - DATEDIFF(MINUTE, TIMEFROMPARTS(DATEPART(HOUR, s.beginDown), 0, 0, 0, 0), CAST(s.beginDown AS time)) else 0 end AS fhr,
-
- 
-  -- case when DATEPART(hour,s.beginDown)<>DATEPART(hour,s.endDown) then
-  --DATEDIFF(MINUTE, TIMEFROMPARTS(DATEPART(HOUR, s.endDown), 0, 0, 0, 0), CAST(s.endDown AS time))  else 0 end AS lhr
 FROM vWorkOrder_DownTime s) y) q)
 
 SELECT 
@@ -240,7 +237,7 @@ SELECT
 FROM (SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -251,7 +248,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -262,7 +259,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -273,7 +270,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -284,7 +281,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -295,7 +292,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -306,7 +303,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -317,7 +314,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -328,7 +325,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -339,7 +336,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -350,7 +347,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -361,7 +358,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -372,7 +369,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -383,7 +380,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -394,7 +391,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -405,7 +402,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
@@ -416,7 +413,7 @@ UNION
 SELECT
   z.wc,
   z.wo,
-  z.op,
+  z.op,z.ops,
   z.emp,
   z.st,
   z.stp,
